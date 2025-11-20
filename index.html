@@ -7,7 +7,62 @@
     <title>Form Fundamentals</title>
   </head>
   <body class="p-4">
-    <section id="result" class="mt-6"></section>
+    <form class="mx-auto max-w-md space-y-4 rounded border p-4">
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="name">Name</label>
+        <input
+          id="name"
+          name="name"
+          required
+          class="w-full rounded border px-3 py-2"
+        />
+      </div>
+
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          class="w-full rounded border px-3 py-2"
+        />
+      </div>
+
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="password"
+          >Password</label
+        >
+        <input
+          id="password"
+          name="password"
+          type="password"
+          required
+          class="w-full rounded border px-3 py-2"
+        />
+      </div>
+
+      <div>
+        <label class="mb-1 block text-sm font-medium" for="confirm-password"
+          >Confirm Password</label
+        >
+        <input
+          id="confirm-password"
+          name="confirm-password"
+          type="password"
+          required
+          class="w-full rounded border px-3 py-2"
+        />
+      </div>
+
+      <button
+        class="rounded bg-teal-600 hover:bg-teal-800 px-4 py-2 text-white disabled:bg-gray-400"
+        type="submit"
+      >
+        Submit
+      </button>
+      <output class="text-red-500 italic"></output>
+    </form>
     <script type="module" src="./src/main.js"></script>
     <script type="module" src="./src/form-practice.js"></script>
   </body>

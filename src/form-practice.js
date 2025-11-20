@@ -1,5 +1,5 @@
 // SCREAMING_SNAKE_CASE as this is a constant configuration value.
-const REQUIRED = ["name", "email", "message"];
+const REQUIRED = ["name", "email", "password", "confirm-password"];
 
 const form = document.querySelector("form");
 const result = document.querySelector("#result");
