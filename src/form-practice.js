@@ -1,35 +1,27 @@
-// SCREAMING_SNAKE_CASE as this is a constant configuration value.
 const REQUIRED = ["name", "email", "password", "confirm-password"];
 
+// HTML elements
 const form = document.querySelector("form");
-const result = document.querySelector("#result");
-
-// CSS attribute selector.
 const submitBtn = form.querySelector('[type="submit"]');
+const errorMsg = document.querySelector("output");
 
 submitBtn.disabled = true; // Start disabled
 
+// Check if all fields are filled
 form.addEventListener("input", () => {
-  // Does EVERY form input field have a non-empty value?
   REQUIRED.every((field) => form[field].value.trim() !== "")
-    ? (submitBtn.disabled = false) // If yes, enable button
-    : (submitBtn.disabled = true); // If no, disable button
+    ? (submitBtn.disabled = false)
+    : (submitBtn.disabled = true);
 });
 
+// Intercept default submit event with custom event
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
 
-  // Pass the data object to the Results function to get HTML! 🚀
-  result.innerHTML = Results(data);
+  if (data.password === data["confirm-password"]) {
+    return (errorMsg.textContent = "");
+  }
+  return (errorMsg.textContent = "Password verification failed");
 });
-
-function Results(data) {
-  return `<ul class="space-y-1 text-sm">
-        ${Object.entries(data)
-          .map(([k, v]) => `<li><strong>${k}:</strong> ${v}</li>`)
-          .join("")}
-    </ul>   
-    `;
-}
